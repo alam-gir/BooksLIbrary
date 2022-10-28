@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css link  -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="text-align: center; display: block; margin-bottom: 2rem;">Assignment: 01. Add Books And Remove.</h1>
+
+
+
+
+    <form class="input-container popup">
+        <div class="input-boxes">
+            <label for="text"> Book Name:</label>
+        <input type="text" name="book-name" class="book-name"><br>
+
+        <label for="text"> Author:</label>
+        <input type="text" name="author" class="author" ><br>
+
+        <label for="text"> Total Page:</label>
+        <input type="number" name="page" class="page" ><br>
+
+        <input type="submit" class="submit-btn">
+        </div>
+        <div class="form-exit-btn-container"><img src="icon/close.png" class="form-exit-btn" alt=""></div>
+    </form>
+
+    <section class="books-and-btn">
+        <div class="add-book-btn-container">
+            <img src="icon/plus.png" class="add-book-btn" alt="Add New Books">
+        </div>
+        <div class="book-container"></div>
+        <div class="add-book-btn-container">
+            <img src="icon/plus.png" class="add-book-btn" alt="Add New Books">
+        </div>
+    </section>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>

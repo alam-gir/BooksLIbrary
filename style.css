@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    padding: 5rem;
+}
+.input-container{
+    height: 20rem;
+    width: 70%;
+    min-height: 45vh;
+    min-width: 15rem;
+    max-width: 60rem;
+    background-color: rgb(255, 220, 214);
+    border-radius: 1rem;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display:flex; 
+    justify-content:center;
+    align-items: center; 
+    flex-direction: column;
+    position: fixed;
+    transition: all .7s ease-in-out;
+}
+
+/* active form  */
+
+.popup{
+    top: -20rem;
+
+}
+
+.input-container label{
+    margin-bottom: .3rem;
+    font-size: 1rem;
+    color: #333333;
+
+}
+
+.input-boxes{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container input{
+    height: 1.5rem;
+    padding: 1rem;
+    outline: none;
+    border-radius: .3rem;
+    border: none;
+    transition: all .3s;
+
+}
+
+.input-container input:focus{
+    background-color: rgb(255, 220, 214);
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
+    border: none;
+}
+
+.input-container input[type= submit]{
+    height: 2rem;
+    width: auto;
+    padding: 0 2rem;
+    background: tomato;
+    color: #fff;
+    font-weight: 700;
+    outline: none;
+    border: none;
+}
+.input-container input[type=submit]:hover{
+    background-color: rgb(255, 70, 38);
+
+}
+.input-container input[type=submit]:focus{
+    background-color: rgba(255,70, 38);
+}
+
+
+/* exit btn  */
+.form-exit-btn-container{
+    height: 1.3rem;
+    width: 1.3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.form-exit-btn-container img{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    transition: all .3s;
+}
+.form-exit-btn-container img:hover{
+    transform: rotate(90deg) scale(1.1);
+
+}
+
+
+
+
+.book-container{
+    height: auto;
+    max-width: 60rem;
+    margin: auto;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.book-card{
+    height: 10rem;
+    width: 15rem;
+    min-width: 15rem;
+    padding: 2rem 1rem;
+    background-color: tomato;
+    text-align: left;
+    transition: all .3s ease-in-out;
+}
+
+.book-card:hover{
+    transform: scale(1.02);
+    background-color: rgb(255, 70, 50);
+}
+.book-card h1{
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #fff;
+    
+}
+.book-card h2{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: #333333;
+    
+}
+.book-card h3{
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: #444444;
+}
+.book-card h4{
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+
+/* add books btn  */
+
+.add-book-btn-container{
+    height: 6rem;
+    width: 8rem;
+    min-width: 8rem;
+    margin: auto;
+    text-align: center;
+    background-color: rgb(255, 220, 214);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-book-btn-container img{
+    height: 3rem;
+    width: auto;
+    transition: all .3s;
+    cursor: pointer;
+}
+.add-book-btn-container img:hover{
+    transform: scale(1.2);
+}
