@@ -173,20 +173,30 @@ const totalPage = document.querySelector('.page');
 const submitBtn = document.querySelector('.submit-btn');
 const booksContainer = document.querySelector('.book-container');
 const inputContainer = document.querySelector('.input-container');
-const addBookBtn = document.querySelector('.add-book-btn');
+const addBookBtnTop = document.querySelector('.add-btn-top');
+const addBookBtnBottom = document.querySelector('.add-btn-bottom');
 const formExitBtn = document.querySelector('.form-exit-btn');
+const addBookBtnContainerBottom = document.querySelector('.add-book-btn-container-bottom')
 const booksAndBtnContainer = document.querySelector('.books-and-btn');
+const deleteAlertBox = document.querySelector('.delete-alert-box')
+const deleteConfirmBtns = document.querySelectorAll('.delete-confirm-btns button')
+const deleteAlertBoxBookName = document.querySelector('.book-name-container');
 
+    
 
 window.addEventListener('DOMContentLoaded', ()=>{
     displyBooks();
     popupAdd();
+    deleteBooks();
+    bookaddBtnBottom();
 })
 
 submitBtn.addEventListener('click',(e)=>{
     e.preventDefault();
     makeEntry();
     displyBooks();
+    deleteBooks();
+    bookaddBtnBottom();
 })
 
 
@@ -228,8 +238,11 @@ function makeEntry(){
 function displyBooks(){
     // get data 
     const books = JSON.parse(localStorage.getItem("allBooks"));
+    let count = 0;
     const booksElement = books.map(item=>{
-        return`<div class="book-card">
+        return`<div class="book-card" data-id="${count++}">
+        <button class="delete-btn"><img src="icon/delete.png" alt=""></button>
+        <button class="edit-btn"><img src="icon/edit.png" alt=""></button>
         <h1>${item.name}</h1>
         <h2>${item.author}</h2>
         <h3>This Book Has ${item.totalPage} Pages.</h3>
@@ -246,11 +259,23 @@ function onSubmitted(){
     booksAndBtnContainer.style.filter = "blur(0)";
 }
 
+function bookaddBtnBottom(){
+    const books = JSON.parse(localStorage.getItem("allBooks"))
+    if(books.length > 15){
+        addBookBtnContainerBottom.classList.add('add-book-btn-container-bottom-active');
+    }
+}
+
 function popupAdd(){
-    addBookBtn.addEventListener('click', ()=>{
+    
+    addBookBtnTop.addEventListener('click', ()=>{
         inputContainer.classList.remove('popup');
         booksAndBtnContainer.style.filter = "blur(5px)";
     })
+    // addBookBtnBottom.addEventListener('click', ()=>{
+    //     inputContainer.classList.remove('popup');
+    //     booksAndBtnContainer.style.filter = "blur(5px)";
+    // })
     formExitBtn.addEventListener('click', ()=>{
         inputContainer.classList.add('popup');
         booksAndBtnContainer.style.filter = "blur(0)";
@@ -262,4 +287,50 @@ function popupAdd(){
 function scrollToEnd(){
     let booksContainerBottom = pageYOffset + booksContainer.getBoundingClientRect().bottom;
     window.scrollTo(0,booksContainerBottom);
+}
+
+// delete book by delete btn
+
+// iff click delete buttons then ----------
+function deleteBooks(){
+    
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    const books = JSON.parse(localStorage.getItem("allBooks"));
+
+    deleteBtns.forEach(btn=>{
+
+        btn.addEventListener('click',(e)=>{
+             
+            // make books container blurry
+            booksAndBtnContainer.style.filter = "blur(5px)";
+            let currentBook = parseInt(e.currentTarget.parentElement.dataset.id);
+            console.log(currentBook)
+                deleteAlertBox.classList.add('delete-alert-box-active');
+                deleteConfirmBtns.forEach(confirmBtn=>{
+                    confirmBtn.addEventListener('click', (e)=>{
+                        
+                        // iff click delete boxes yes button then ----------
+                        if(e.currentTarget.dataset.id === "y"){
+                            
+                            
+                            // delete an item from books 
+                            books.splice(currentBook,1);
+
+                            //now i have to set edited array in localStorage
+                            localStorage.setItem("allBooks",JSON.stringify(books))
+                            window.location.reload();
+
+                            deleteAlertBox.classList.remove('delete-alert-box-active');
+                            booksAndBtnContainer.style.filter = "blur(0)";
+                        }
+
+                        // iff click delete boxes no button then ----------
+                        else deleteAlertBox.classList.remove('delete-alert-box-active');
+                        booksAndBtnContainer.style.filter = "blur(0)";
+                    })
+                })
+                deleteAlertBoxBookName.textContent = books[currentBook].name;
+
+        })
+    })
 }

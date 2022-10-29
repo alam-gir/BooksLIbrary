@@ -33,15 +33,23 @@
 
     <section class="books-and-btn">
         <div class="add-book-btn-container">
-            <img src="icon/plus.png" class="add-book-btn" alt="Add New Books">
+            <img src="icon/plus.png" class="add-book-btn add-btn-top" alt="Add New Books">
         </div>
-        <div class="book-container"></div>
-        <div class="add-book-btn-container">
-            <img src="icon/plus.png" class="add-book-btn" alt="Add New Books">
+        <div class="book-container">
+            <!-- here comes books container dynamically -->
         </div>
+        <div class="add-book-btn-container add-book-btn-container-bottom">
+            <img src="icon/plus.png" class="add-book-btn add-btn-bottom" alt="Add New Books">
+        </div>
+        
     </section>
-
-
+    <div class="delete-alert-box">
+        <h1 class="notification">Do You Want To Delete <span class="book-name-container"></span> ?</h1>
+        <div class="delete-confirm-btns">
+            <button data-id="y">Yes</button>
+            <button data-id="n">No</button>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
