@@ -239,17 +239,20 @@ function displyBooks(){
     // get data 
     const books = JSON.parse(localStorage.getItem("allBooks"));
     let count = 0;
-    const booksElement = books.map(item=>{
-        return`<div class="book-card" data-id="${count++}">
-        <button class="delete-btn"><img src="icon/delete.png" alt=""></button>
-        <button class="edit-btn"><img src="icon/edit.png" alt=""></button>
-        <h1>${item.name}</h1>
-        <h2>${item.author}</h2>
-        <h3>This Book Has ${item.totalPage} Pages.</h3>
-    </div>`
-    }).join("");
+    if(books !== null){
+        const booksElement = books.map(item=>{
+            return`<div class="book-card" data-id="${count++}">
+            <button class="delete-btn"><img src="icon/delete.png" alt=""></button>
+            <button class="edit-btn"><img src="icon/edit.png" alt=""></button>
+            <h1>${item.name}</h1>
+            <h2>${item.author}</h2>
+            <h3>This Book Has ${item.totalPage} Pages.</h3>
+        </div>`
+        }).join("");
+        booksContainer.innerHTML = booksElement;
+    }
 
-    booksContainer.innerHTML = booksElement;
+    
 }
 
 
@@ -261,8 +264,10 @@ function onSubmitted(){
 
 function bookaddBtnBottom(){
     const books = JSON.parse(localStorage.getItem("allBooks"))
-    if(books.length > 15){
-        addBookBtnContainerBottom.classList.add('add-book-btn-container-bottom-active');
+    if(books !== null){
+        if(books.length > 15){
+            addBookBtnContainerBottom.classList.add('add-book-btn-container-bottom-active');
+        }
     }
 }
 
