@@ -56,6 +56,7 @@ body{
     outline: none;
     border-radius: .3rem;
     border: none;
+    text-transform: capitalize;
     transition: all .3s;
 
 }
@@ -143,21 +144,23 @@ body{
 }
 
 .book-card h1{
-    font-size: 2rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
     color: #fff;
+    margin-bottom: .8rem;
     
 }
 .book-card h2{
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-transform: capitalize;
     color: #333333;
+    margin-bottom: .4rem;
     
 }
 .book-card h3{
-    font-size: 1rem;
+    font-size: .875rem;
     text-transform: capitalize;
-    color: #444444;
+    color: #555555;
 }
 .book-card h4{
     font-size: 1rem;
